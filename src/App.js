@@ -38,6 +38,9 @@ function App() {
     );
     setCards(shuffledCards);
     setTurns(0);
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    
   };
 
   const resetTurn = () => {
@@ -90,6 +93,7 @@ function App() {
           />
         ))}
       </div>
+      <p>Turns: {turns}</p>
     </div>
   );
 }
