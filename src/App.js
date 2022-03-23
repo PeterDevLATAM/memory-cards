@@ -30,6 +30,7 @@ function App() {
   const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
+  const [disabled, setDisable] = useState(false);
 
   const shuffleCards = () => {
     const shuffledCards = shuffle([...cardImages, ...cardImages]).map(
@@ -43,10 +44,12 @@ function App() {
     setChoiceOne(null);
     setChoiceTwo(null);
     setTurns((prevTurns) => prevTurns + 1);
+    setDisable(false);
   };
 
   useEffect(() => {
     if (choiceTwo) {
+      setDisable(true);
       if (choiceOne.src === choiceTwo.src) {
         console.log("Match");
         setCards((prevCards) => {
@@ -61,8 +64,7 @@ function App() {
       } else {
         console.log("Don't Match");
       }
-      setTimeout(()=>resetTurn(), 700)
-      
+      setTimeout(() => resetTurn(), 1000);
     }
   }, [choiceTwo]);
 
@@ -82,7 +84,10 @@ function App() {
             card={card}
             key={card.id}
             handleChoice={handleChoice}
-            flipped={card === choiceOne || card === choiceTwo || card.matched === true}
+            flipped={
+              card === choiceOne || card === choiceTwo || card.matched === true
+            }
+            disabled={disabled}
           />
         ))}
       </div>
