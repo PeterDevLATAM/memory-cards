@@ -71,7 +71,7 @@ function App() {
   console.log(cards);
 
   const handleChoice = (card) => {
-    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+    if (!disabled) choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
 
   return (
@@ -87,7 +87,6 @@ function App() {
             flipped={
               card === choiceOne || card === choiceTwo || card.matched === true
             }
-            disabled={disabled}
           />
         ))}
       </div>

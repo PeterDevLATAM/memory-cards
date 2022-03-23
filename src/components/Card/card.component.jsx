@@ -1,6 +1,6 @@
 import "./card.style.scss";
 
-function Card({ card, handleChoice, flipped, disabled }) {
+function Card({ card, handleChoice, flipped }) {
   const handleClick = () => {
     handleChoice(card);
   };
@@ -12,7 +12,7 @@ function Card({ card, handleChoice, flipped, disabled }) {
         <img
           className="back"
           src="/img/cover.png"
-          onClick={!disabled ? handleClick : null}
+          onClick={handleClick}
           alt="cover"
         />
       </div>
